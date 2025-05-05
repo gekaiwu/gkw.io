@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flex 布局</title>
+    <meta name="description" content="Re01 编程课的Flex布局演示。" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#ffffff" />
+
+    <style>
+      body {
+        margin: 0;
+        /* vh 是view height 既视窗高度的意思，100就是100%占满窗口高度 */
+        height: 100vh;
+        background-color: #eee;
+      }
+      /* * {
+        border: 1px solid #333;
+      } */
+      .flex {
+        display: flex;
+      }
+      /* 占满比例 */
+      .flex1 {
+        flex: 1;
+      }
+      /* 竖向 */
+      .column {
+        flex-direction: column;
+      }
+      /* 阴影 */
+      .yinYing {
+        box-shadow: rgb(0 0 0 / 20%) 0px 2px 1px -1px,
+          rgb(0 0 0 / 14%) 0px 1px 1px 0px, rgb(0 0 0 / 12%) 0px 1px 3px 0px;
+      }
+      /* 白色背景 */
+      .baiSe {
+        background-color: #fff;
+      }
+      /* 上下左右外边距 */
+      .mg8 {
+        margin: 8px;
+      }
+      /* 右外边距 */
+      .mgr8 {
+        margin-right: 8px;
+      }
+      /* 上外边距 */
+      .mgt8 {
+        margin-top: 8px;
+      }
+      /* 四个小盒子 */
+      .shuJu {
+        height: 100px;
+      }
+      /* 中间的大盒子 */
+      .lieBiaoXiang {
+        height: 160px;
+      }
+      /* 导航条 */
+      .daoHang {
+        padding: 10px 20px;
+        border-bottom: 1px solid rgb(201, 201, 201);
+        font-size: 14px;
+        color: #666;
+      }
+      .neiRong::-webkit-scrollbar {
+        display: none; /* Chrome Safari */
+      }
+
+      /* 当屏幕宽度小于600px时要改变的css */
+      @media (max-width: 600px) {
+        /* 小屏幕上取消侧边栏，后面学js时会教怎么弹出 */
+        .ceBian {
+          display: none;
+        }
+        /* 内容栏和数据栏flex方向改为竖向 */
+        .neiRong {
+          flex-direction: column;
+        }
+        .shuJuQu {
+          flex-direction: column;
+        }
+        /* 右区加左外边距 */
+        .youQu {
+          margin-left: 8px;
+        }
+        /* 数据块外边距，大小改为自动宽高 */
+        .shuJu {
+          margin: 0 0 8px;
+          flex: auto;
+        }
+      }
+    </style>
+  </head>
+  <body class="flex">
+    <!-- 侧边栏 -->
+    <div
+      style="width: 200px; z-index: 3"
+      class="ceBian flex column baiSe yinYing"
+    >
+      <!-- 侧边头像栏 -->
+      <div
+        style="
+          padding: 10px;
+          align-items: center;
+          justify-content: center;
+          border-bottom: 1px solid #999;
+        "
+        class="flex"
+      >
+        <img
+          alt="logo"
+          src="https://ts3.tc.mm.bing.net/th/id/OIP-C.7GLMYPqMlt2LgkbPsOnDIAAAAA?w=251&h=248&c=8&rs=1&qlt=90&o=6&pid=3.1&rm=2"
+          width="40px"
+          height="40px"
+        />
+        <div style="margin-left: 10px">gkw</div>
+      </div>
+      <!-- 导航栏 -->
+      <div class="flex1">
+        <div class="daoHang">导航</div>
+        <div class="daoHang">导航</div>
+        <div class="daoHang">导航</div>
+        <div class="daoHang">导航</div>
+        <div class="daoHang">导航</div>
+      </div>
+    </div>
+    <!-- 主区域 -->
+    <div class="flex flex1 column">
+      <!-- 头部栏 -->
+      <div style="height: 60px; z-index: 2" class="baiSe yinYing"></div>
+      <!-- 内容区 -->
+      <div class="flex flex1 neiRong" style="overflow: auto">
+        <!-- 左区 -->
+        <div style="flex: 3" class="flex column mg8">
+          <!-- 数据区 -->
+          <div class="flex shuJuQu">
+            <!-- 四个小块显示重点数据 -->
+            <div class="shuJu baiSe yinYing flex1 mgr8">
+                <p style="text-align:center">你好</p>
+            </div>
+            <div class="shuJu baiSe yinYing flex1 mgr8">
+                <p style="text-align:center">holle</p>
+            </div>
+            <div class="shuJu baiSe yinYing flex1 mgr8">
+                <p style="text-align:center">米</p>
+            </div>
+            <div class="shuJu baiSe yinYing flex1">
+                <p style="text-align:center">world</p>
+            </div>
+          </div>
+          <!-- 列表区，列表数据可以无限增加 -->
+          <div class="flex column">
+            <!-- 列表项 -->
+            <div class="lieBiaoXiang mgt8 baiSe yinYing">
+                <img src="https://ts1.tc.mm.bing.net/th/id/ODLS.e03554ec-0a97-40ff-ab73-831db4d5edbf?w=32&h=32&qlt=90&pcl=fffffc&o=6&pid=1.2"
+                width="90px"
+                height="90px"
+                alt="">
+                <p style="text-align:center">好</p>
+                <a href="https://www.mi.com">有情连接</a>                
+            </div>
+            <div class="lieBiaoXiang mgt8 baiSe yinYing">
+            <img src="https://ts1.tc.mm.bing.net/th?u=https%3a%2f%2ffc-ccimage.baidu.com%2f0%2fpic%2f613555375_-1815134569_-1823270655.jpg&ehk=Zfu0WxkThykL9fWB6gQmAoF%2bfGxPWt5SJ1G%2f3HQEzuc%3d&w=50&h=50&o=6&pid=PopNow"
+                width="90px"
+                height="90px"
+                alt="">
+                <p style="text-align:center">好</p>
+                <a href="https://oppo.com">有情连接</a>
+            </div>
+            <div class="lieBiaoXiang mgt8 baiSe yinYing">
+                <img src="https://ts4.tc.mm.bing.net/th?u=https%3a%2f%2ffc-ccimage.baidu.com%2f0%2fpic%2f-109874685_-1617604930_-1715098598.jpg&ehk=%2fFUzGy30MdTsSeZMf8q2uqtra7IxGNH58faLhnXRQUM%3d&w=50&h=50&o=6&pid=PopNow"
+                width="90px"
+                height="90px"
+                alt="">
+                <p style="text-align:center">好</p>
+                <a href="https://shop.vivo.com.cn">有情连接</a>
+            </div>
+            <div class="lieBiaoXiang mgt8 baiSe yinYing">
+                                <img src="https://ts1.tc.mm.bing.net/th/id/OADD2.7353137480164_19VGP1DYL95RBBCDHA?w=32&h=32&o=6&pid=21.2"
+                width="90px"
+                height="90px"
+                alt="">
+                <p style="text-align:center">好</p>
+                <a href="https://www.apple.com.cn">有情连接</a>
+            </div>
+            <div class="lieBiaoXiang mgt8 baiSe yinYing">
+                                <img src="https://ts4.tc.mm.bing.net/th/id/ODLS.d36ac47e-3c87-465d-87af-e700d827a080?w=32&h=32&qlt=91&pcl=fffffa&o=6&pid=1.2"
+                width="90px"
+                height="90px"
+                alt="">
+                <p style="text-align:center">好</p>
+                <a href="https://www.huawei.com.cn">有情连接</a>
+            </div>
+          </div>
+        </div>
+        <!-- 右区 -->
+        <div style="flex: 1" class="youQu flex column mgr8 mgt8">
+          <!-- 提示区 -->
+          <div style="height: 150px" class="baiSe yinYing"></div>
+          <!-- 消息区 -->
+          <div style="height: 300px" class="mgt8 baiSe yinYing"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
